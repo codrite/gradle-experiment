@@ -1,0 +1,11 @@
+FROM openjdk:17-alpine
+
+RUN apk --no-cache add curl
+RUN apk --no-cache add dos2unix
+RUN apk --no-cache add bash
+
+COPY build/libs/GradleExperiments-0.0.1-SNAPSHOT.jar /opt/GradleExperiments.jar
+
+EXPOSE 9090
+
+ENTRYPOINT ["java", "-jar", "/opt/GradleExperiments.jar"]
